@@ -40,7 +40,7 @@ public class TextFormat {
       }
     }
 
-    return CONTENT_TYPE_004;
+    return CONTENT_TYPE_OPENMETRICS_100;
   }
 
   /**
@@ -201,13 +201,13 @@ public class TextFormat {
     while(mfs.hasMoreElements()) {
       Collector.MetricFamilySamples metricFamilySamples = mfs.nextElement();
       String name = metricFamilySamples.name;
-
+      // 书写类型
       writer.write("# TYPE ");
       writer.write(name);
       writer.write(' ');
       writer.write(omTypeString(metricFamilySamples.type));
       writer.write('\n');
-
+      // 单位 counter 和 gauge一般没有
       if (!metricFamilySamples.unit.isEmpty()) {
         writer.write("# UNIT ");
         writer.write(name);

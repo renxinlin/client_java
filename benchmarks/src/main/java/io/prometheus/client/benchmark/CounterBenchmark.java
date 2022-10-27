@@ -25,7 +25,7 @@ public class CounterBenchmark {
   io.prometheus.client.Counter prometheusSimpleCounter;
   io.prometheus.client.Counter.Child prometheusSimpleCounterChild;
   io.prometheus.client.Counter prometheusSimpleCounterNoLabels;
-
+  integration_tests
   @Setup
   public void setup() {
     prometheusSimpleCounter = io.prometheus.client.Counter.build()

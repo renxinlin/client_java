@@ -59,6 +59,8 @@ public abstract class SimpleCollector<Child> extends Collector {
    * Return the Child with the given labels, creating it if needed.
    * <p>
    * Must be passed the same number of labels are were passed to {@link #labelNames}.
+   * labels表示label键值对的key,labelValues 表示键值对的values
+   * labelValues一组对应一个Child,child内部包含指标信息
    */
   public Child labels(String... labelValues) {
     if (labelValues.length != labelNames.size()) {

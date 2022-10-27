@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * Immutable data class holding an Exemplar.
+ * immutable data class holding an exemplar.
  */
 public class Exemplar {
 

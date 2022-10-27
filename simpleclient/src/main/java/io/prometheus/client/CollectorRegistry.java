@@ -25,9 +25,11 @@ public class CollectorRegistry {
   /**
    * The default registry.
    */
+  // 默认的CollectorRegistry 官方建议不要自定义
   public static final CollectorRegistry defaultRegistry = new CollectorRegistry(true);
 
   private final Object namesCollectorsLock = new Object();
+  /** counter counter_total counter_created  {@link Collector.MetricFamilySamples#getNames()}.*/
   private final Map<Collector, List<String>> collectorsToNames = new HashMap<Collector, List<String>>();
   private final Map<String, Collector> namesToCollectors = new HashMap<String, Collector>();
 
@@ -57,6 +59,7 @@ public class CollectorRegistry {
                   + namesToCollectors.get(name).getClass().getSimpleName());
         }
       }
+      // 添加注册容器
       for (String name : names) {
         namesToCollectors.put(name, m);
       }
@@ -128,6 +131,7 @@ public class CollectorRegistry {
    * Enumeration of metrics of all registered collectors.
    */
   public Enumeration<Collector.MetricFamilySamples> metricFamilySamples() {
+    // collector 的枚举 能够枚举所有collector的指标信息
     return new MetricFamilySamplesEnumeration();
   }
 
@@ -203,6 +207,7 @@ public class CollectorRegistry {
       }
 
       while (collectorIter.hasNext()) {
+        // 获取下一个Collector 并提取metrics采样信息
         metricFamilySamples = collectorIter.next().collect(sampleNameFilter).iterator();
         while (metricFamilySamples.hasNext()) {
           next = metricFamilySamples.next().filter(sampleNameFilter);
@@ -218,6 +223,7 @@ public class CollectorRegistry {
       if (current == null) {
         throw new NoSuchElementException();
       }
+      // 调用Collector的collect进行指标收集
       findNextElement();
       return current;
     }

@@ -7,12 +7,12 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 /**
- * A collector for a set of metrics.
+ * a collector for a set of metrics.
  * <p>
- * Normal users should use {@link Gauge}, {@link Counter}, {@link Summary} and {@link Histogram}.
+ * normal users should use {@link gauge}, {@link counter}, {@link summary} and {@link histogram}.
  * <p>
- * Subclasssing Collector is for advanced uses, such as proxying metrics from another monitoring system.
- * It is it the responsibility of subclasses to ensure they produce valid metrics.
+ * subclasssing collector is for advanced uses, such as proxying metrics from another monitoring system.
+ * it is it the responsibility of subclasses to ensure they produce valid metrics.
  * @see <a href="http://prometheus.io/docs/instrumenting/exposition_formats/">Exposition formats</a>.
  */
 public abstract class Collector {

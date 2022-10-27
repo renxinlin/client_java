@@ -351,7 +351,7 @@ public class Counter extends SimpleCollector<Counter.Child> implements Collector
   }
 
   @Override
-  public List<MetricFamilySamples> collect() {
+  public List<MetricFamilySamples> collect() { /* 一般list size为1 表示 metric的全部数据*/
     List<MetricFamilySamples.Sample> samples = new ArrayList<MetricFamilySamples.Sample>(children.size());
     for(Map.Entry<List<String>, Child> c: children.entrySet()) {
       samples.add(new MetricFamilySamples.Sample(fullname + "_total", labelNames, c.getKey(), c.getValue().get(), c.getValue().getExemplar()));
